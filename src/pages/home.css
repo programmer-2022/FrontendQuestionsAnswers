@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+.word-container {
+    text-align: center;
+    margin-top: 50px;    
+}
+.word-container div {
+    font-size: 50px;
+    display: inline-block;
+    width: 80px;
+    margin-right: 5px;
+    text-align: center;
+    font-family: 'Peralta', cursive;
+    color: rgb(226, 224, 224);
+    border-radius: 20px;
+}
+
+.word-container div:nth-child(1) {
+    background-color: #92C746;
+}
+.word-container div:nth-child(2) {
+    background-color: #AC34E5;
+}
+.word-container div:nth-child(3) {
+    background-color: #F13C70;
+}
+.word-container div:nth-child(4) {
+    background-color: #1198D8;
+}
+.word-container div:nth-child(5) {
+    background-color: #FA9600;
+}
+.word-container div:nth-child(6) {
+    background-color: #01B0B7;
+}
+input[type="text"] {
+    height: 50px;
+    font-family: 'Peralta', cursive;
+    font-size: 18px;
+    font-style: normal;
+    color: #777B75;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.start {
+    background-color: #1198D8; 
+    height: 40px;
+    font-family: 'Peralta', cursive;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 14px; 
+}
+.start:hover {
+    color: white;
+    background-color: #1085bb; 
+}
