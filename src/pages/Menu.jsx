@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar, faGamepad, faQuestion, faUser, faInfo } from '@fortawesome/free-solid-svg-icons'
 import './menu.css'
 
 export default function Menu() {
@@ -23,6 +25,9 @@ export default function Menu() {
             case 'crear-preguntas':
                 path = '/crear'
                 break
+            case 'cambiar-nickname':
+                path = '/'
+                break
         }
         navigate(path)
     }
@@ -43,19 +48,19 @@ export default function Menu() {
 
             <div className="contenedor-botones">
                 <div className="div-botones">
-                    <button id="iniciar-juego" onClick={handleOnClick}>Iniciar Juego</button>
+                    <button id="iniciar-juego" onClick={handleOnClick}><FontAwesomeIcon className="me-3" icon={faGamepad} />Iniciar Juego</button>
                 </div>
                 <div className="div-botones">
-                    <button id="crear-preguntas" onClick={handleOnClick}>Crear Preguntas</button>
+                    <button id="crear-preguntas" onClick={handleOnClick}><FontAwesomeIcon className="me-3" icon={faQuestion} />Crear Preguntas</button>
                 </div>                
                 <div className="div-botones">
-                    <button id="marcadores" onClick={handleOnClick}>Marcadores</button>
+                    <button id="marcadores" onClick={handleOnClick}><FontAwesomeIcon className="me-3" icon={faStar} />Marcadores</button>
                 </div>
                 <div className="div-botones">
-                    <button id="acerca-de" onClick={handleOnClick}>Acerca de</button>
+                    <button id="acerca-de" onClick={handleOnClick}><FontAwesomeIcon className="me-3" icon={faInfo} />Acerca de</button>
                 </div>
                 <div className="div-botones">
-                    <button id="salir-juego" onClick={handleOnClick}>Salir del Juego</button>
+                    <button id="cambiar-nickname" onClick={handleOnClick}><FontAwesomeIcon className="me-3" icon={faUser} />Cambiar Nickname</button>
                 </div>
             </div>
         </div>

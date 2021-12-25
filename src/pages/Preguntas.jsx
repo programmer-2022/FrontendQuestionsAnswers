@@ -1,9 +1,10 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { helpHttp } from '../helpers/helpHttp'
 import Swal from 'sweetalert2'
 import './preguntas.css'
 
+import BotonAtras from '../components/BotonAtras'
 import Categories from '../components/Categories'
 
 export default function Preguntas() {
@@ -12,6 +13,11 @@ export default function Preguntas() {
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [selectVal, setSelectVal] = useState("Seleccione Categoría")
     const [error, setError] = useState(null)
+
+    const [contadorPreguntas, setContadorPreguntas] = useState(0)
+    const [isCountDocument, setIsCountDocument] = useState(true)
+
+    const min = 25
 
     const api = helpHttp()
     const url = 'http://localhost:5000/api/questions'
@@ -54,11 +60,12 @@ export default function Preguntas() {
         
         const model= {
           questionText : body.pregunta,
+          category : selectVal,
           answerOptions : [
-                { answerText : body.respuesta1, isCorrect : (body.radioValue === "1") ? true : false, category : selectVal },
-                { answerText : body.respuesta2, isCorrect : (body.radioValue === "2") ? true : false, category : selectVal },
-                { answerText : body.respuesta3, isCorrect : (body.radioValue === "3") ? true : false, category : selectVal },
-                { answerText : body.respuesta4, isCorrect : (body.radioValue === "4") ? true : false, category : selectVal }
+                { answerText : body.respuesta1, isCorrect : (body.radioValue === "1") ? true : false },
+                { answerText : body.respuesta2, isCorrect : (body.radioValue === "2") ? true : false },
+                { answerText : body.respuesta3, isCorrect : (body.radioValue === "3") ? true : false },
+                { answerText : body.respuesta4, isCorrect : (body.radioValue === "4") ? true : false }
             ]        
         }        
         //Enviar datos al backend
@@ -84,7 +91,8 @@ export default function Preguntas() {
                   showConfirmButton: false,
                   timer: 1000
               })
-              console.log();
+              setIsCountDocument(true)
+              resetFields()
           } else {
               setError(res)
           }         
@@ -95,8 +103,31 @@ export default function Preguntas() {
       setSelectVal(value)
     }
 
+    const resetFields = () => {
+      setSelectVal("Seleccione Categoría")
+      form.current.reset()
+    }
+
+    if(isCountDocument) {
+      const uri = 'http://localhost:5000/api/count'
+      api.get(uri).then((res) => {
+        if(!res.err) {
+          setError(null)
+          setContadorPreguntas(parseInt(res.count))
+          setIsCountDocument(false)
+        } else {
+          setError(res)
+        }          
+      })
+    }
+
     return (
         <>
+          <BotonAtras url="/menu" />
+
+          <div className="contador-preguntas mt-5">
+            <p>{contadorPreguntas}<small>/{min}</small></p>
+          </div>
           <div className="container preguntas">
             <div className="my-5 text-center">
               <h1>Editor de Preguntas</h1>
@@ -104,6 +135,7 @@ export default function Preguntas() {
                 respuesta, también deberá seleccionar la categoría a la cuál pertenece
                 (nivel de dificultad) y marcar la respuesta correcta mediante el control de radio.
               </p>
+              <p>El juego empezará una vez tenga registrada 25 preguntas.. mínimo 5 por cada nivel</p>
             </div>
 
             <form ref={form} onSubmit={handleSubmit(onHandleSubmit)}>	
@@ -123,7 +155,7 @@ export default function Preguntas() {
                   <input
                     type="text" 
                     className="form-control py-3 fs-4"
-                    placeholder="Ingrese opción de respuesta corta (max-caracteres - 80)"
+                    placeholder="Ingrese opción de respuesta (max-caracteres - 80)"
                     autoComplete="off"
                     maxLength="80"
                     {...register("respuesta1")}
@@ -143,7 +175,7 @@ export default function Preguntas() {
                   <input 
                     type="text" 
                     className="form-control py-3 fs-4"                 
-                    placeholder="Ingrese opción de respuesta corta (max-caracteres - 80)"
+                    placeholder="Ingrese opción de respuesta (max-caracteres - 80)"
                     autoComplete="off"
                     maxLength="80"
                     {...register("respuesta2")}
@@ -163,7 +195,7 @@ export default function Preguntas() {
                   <input 
                     type="text" 
                     className="form-control py-3 fs-4"                  
-                    placeholder="Ingrese opción de respuesta corta (max-caracteres - 80)"
+                    placeholder="Ingrese opción de respuesta (max-caracteres - 80)"
                     autoComplete="off"
                     maxLength="80"
                     {...register("respuesta3")}
@@ -183,7 +215,7 @@ export default function Preguntas() {
                   <input 
                     type="text" 
                     className="form-control py-3 fs-4"                  
-                    placeholder="Ingrese opción de respuesta corta (max-caracteres - 80)"
+                    placeholder="Ingrese opción de respuesta (max-caracteres - 80)"
                     autoComplete="off"
                     maxLength="80"
                     {...register("respuesta4")}

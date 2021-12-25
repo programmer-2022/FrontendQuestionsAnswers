@@ -4,11 +4,11 @@ import './categories.css'
 export default function Categories({selectValue}) {
 
     const categories = [
-        { category: "Easy" },
-        { category: "Medium" },
-        { category: "Hard" },
-        { category: "Expert" },
-        { category: "Insane" }
+        { category: "Fácil" },
+        { category: "Medio" },
+        { category: "Difícil" },
+        { category: "Experto" },
+        { category: "Extremo" }
     ]
 
     let [category, setCategory] = useState("Seleccione Categoría")
