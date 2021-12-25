@@ -38,27 +38,27 @@ body {
 .contenedor-botones div:nth-child(1) {
     position: absolute;
     top: 150px;
-    left: 650px;
+    left: 600px;
 }
 .contenedor-botones div:nth-child(2) {
     position: absolute;
-    top: 350px;
-    left: 850px;
+    top: 300px;
+    left: 750px;
 }
 .contenedor-botones div:nth-child(3) {
     position: absolute;
-    top: 550px;
-    left: 1050px;
+    top: 450px;
+    left: 900px;
 }
 .contenedor-botones div:nth-child(4) {
     position: absolute;
-    top: 750px;
-    left: 1250px;
+    top: 600px;
+    left: 1050px;
 }
 .contenedor-botones div:nth-child(5) {
     position: absolute;
-    top: 950px;
-    left: 1450px;
+    top: 750px;
+    left: 1200px;
 }
 .div-botones {
     width: 600px;
@@ -75,4 +75,8 @@ body {
     letter-spacing: 1px;
     width: 100%;
     height: 100%;
+}
+.div-botones button:hover {
+    background-color: #e4d363;  
+    border-radius: 10px;
 }

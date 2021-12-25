@@ -1,0 +1,11 @@
+.preguntas form .form-group textarea {
+    width: 95%;
+}
+.contenedor-radio {
+    width: 5%;
+}
+.contenedor-radio input[type="radio"] {
+    border: 0px;
+    width: 100%;
+    height: 1.5em;
+}

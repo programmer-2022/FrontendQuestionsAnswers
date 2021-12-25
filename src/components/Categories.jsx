@@ -1,10 +1,7 @@
-import React, { useState } from 'react'
-import { helpHttp } from '../helpers/helpHttp'
+import { useState } from 'react'
+import './categories.css'
 
-export default function Categories() {
-
-    const api = helpHttp()
-    const url = 'http://localhost:5000/api/categories'
+export default function Categories({selectValue}) {
 
     const categories = [
         { category: "Easy" },
@@ -18,13 +15,14 @@ export default function Categories() {
 
     let handleCategoryChange = (e) => {
         setCategory(e.target.value)
+        selectValue(e.target.value)
     }
       
     return (
         <>
-            <select onChange={handleCategoryChange}> 
+            <select onChange={handleCategoryChange} className="select-categoria fs-4"> 
                 <option value="Seleccione Categoría"> -- Seleccione Categoría -- </option>
-                {categories.map((c) => <option value={c.category}>{c.category}</option>)}
+                {categories.map((c, idx) => <option key={idx} value={c.category}>{c.category}</option>)}
             </select>
         </>
     )

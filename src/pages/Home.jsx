@@ -13,9 +13,13 @@ export default function Home() {
 
     const onHandleSubmit = (body, e) => {
         if(body !== null) {
+            localStorage.setItem('nickname', body.nickname)
             navigate('/menu')
         }
     }
+
+    let nickname = localStorage.getItem('nickname')
+    if(nickname !== null) localStorage.clear()    
 
     return (
         <>
@@ -28,29 +32,21 @@ export default function Home() {
                 <div>A</div>     
             </div>
 
-            <div className="container text-center" style={{
-                width: '500px',
-                height: '200px',
-                marginTop: '50px',
-                padding: '10px',
-                borderRadius: '10px',
-                opacity: .9
-            }}>
+            <div className="container field-container">
                 <div className="container mt-5">
                     <form ref={form} onSubmit={handleSubmit(onHandleSubmit)}>	
-                        <div>
-                            <div>
+                        <div className="text-center">
+                            <div className="input-div">
                                 <input type="text" 
-                                className="form-control" 
-                                placeholder="Type your Nickname" 
-                                autoComplete="off"
-                                maxLength="20"
+                                    placeholder="Ingrese su Nickname" 
+                                    autoComplete="off"
+                                    maxLength="20"
                                 {...register("nickname", {required: true})}
                                 />
                                 {errors.nickname && <span className="text-danger">(*) <small>Campo obligatorio</small></span>}
                             </div>
                             <div className="mt-2">
-                                <button type="submit" className="btn start w-100">START</button>
+                                <button type="submit" className="btn btn-start w-75">COMENZAR</button>
                             </div>
                         </div>
                     </form>

@@ -4,16 +4,17 @@
     margin-top: 50px;    
 }
 .word-container div {
-    font-size: 50px;
+    font-size: 100px;
     display: inline-block;
-    width: 80px;
+    width: 150px;
+    height: 150px;
+    margin-top: 100px;
     margin-right: 5px;
     text-align: center;
     font-family: 'Peralta', cursive;
     color: rgb(226, 224, 224);
     border-radius: 20px;
 }
-
 .word-container div:nth-child(1) {
     background-color: #92C746;
 }
@@ -32,24 +33,31 @@
 .word-container div:nth-child(6) {
     background-color: #01B0B7;
 }
-input[type="text"] {
-    height: 50px;
+.input-div input[type="text"] {
+    border: none;
+    border-radius: 30px;
+    height: 60px;
+    width: 75%;
     font-family: 'Peralta', cursive;
-    font-size: 18px;
+    font-size: 28px;
     font-style: normal;
     color: #777B75;
     letter-spacing: 1px;
     text-align: center;
 }
-.start {
+.btn-start {
     background-color: #1198D8; 
-    height: 40px;
+    height: 60px;
     font-family: 'Peralta', cursive;
     color: white;
     letter-spacing: 2px;
-    font-size: 14px; 
+    font-size: 24px; 
+    border-radius: 30px;
 }
-.start:hover {
+.btn-start:hover {
     color: white;
     background-color: #1085bb; 
+}
+.field-container {
+    margin-top: 100px;    
 }
