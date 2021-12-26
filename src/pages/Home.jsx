@@ -7,7 +7,7 @@ import './home.css'
 
 export default function Home() {
 
-    const form = useRef();
+    const form = useRef()
 	const { register, handleSubmit, formState: { errors } } = useForm()
     const navigate = useNavigate()
 

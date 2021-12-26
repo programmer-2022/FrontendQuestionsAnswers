@@ -1,0 +1,11 @@
+.btn-respuesta {    
+    width: 80%;
+    height: 60px;
+    text-align: left;
+    background-color: #575551;
+    color: #dedede;
+}
+.btn-respuesta:hover {
+    background-color: #444341;
+    color: #dedede;
+}
